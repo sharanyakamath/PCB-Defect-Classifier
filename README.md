@@ -1,2 +1,2 @@
 # PCB-Defect-Classifier
-Computer Vision Assignment
+python cnn.py
