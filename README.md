@@ -1,2 +1,4 @@
 # PCB-Defect-Classifier
-Computer Vision Assignment
+test: 718 defect, 88 nodefect
+train: 1342 defect, 166 nodefect
+vali: 335 defect, 41 nodefect
