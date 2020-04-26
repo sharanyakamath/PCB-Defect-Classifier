@@ -11,12 +11,12 @@ for x in I:
 
     if(L[label_count] == 0):
         for batch in datagen.flow(x, batch_size=1,
-                                save_to_dir='train/nodefect', save_prefix='nodefect', save_format='jpeg'):
+                                save_to_dir='train/nodefect', save_prefix='defect', save_format='jpeg'):
             break
     
     else:
         for batch in datagen.flow(x, batch_size=1,
-                                save_to_dir='train/defect', save_prefix='defect', save_format='jpeg'):
+                                save_to_dir='train/defect', save_prefix='nodefect', save_format='jpeg'):
             break
     label_count+=1
 
