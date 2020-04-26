@@ -8,11 +8,11 @@ from keras import backend as K
 # dimensions of our images.
 img_width, img_height = 150, 150
 
-train_data_dir = 'data/train'
-validation_data_dir = 'data/validation'
-nb_train_samples = 1508
+train_data_dir = 'augmented-data/train'
+validation_data_dir = 'augmented-data/validation'
+nb_train_samples = 5355
 nb_validation_samples = 376
-epochs = 50
+epochs = 30
 batch_size = 16
 
 if K.image_data_format() == 'channels_first':
@@ -69,16 +69,27 @@ validation_generator = test_datagen.flow_from_directory(
 
 model.fit_generator(
     train_generator,
-    steps_per_epoch=nb_train_samples,
+    steps_per_epoch=nb_train_samples // batch_size,
     epochs=epochs,
     validation_data=validation_generator,
-    validation_steps=nb_validation_samples)
+    validation_steps=nb_validation_samples // batch_size)
 
-model.save_weights('pcb_defect_model2.h5')
+model.save_weights('pcb_defect_model3.h5')
 
-#Testing
-test_data_dir = 'data/test'
-test_datagen = ImageDataGenerator(rescale=1. / 255)
-test_generator = test_datagen.flow_from_directory(test_data_dir, target_size=(img_width, img_height),batch_size=batch_size,class_mode='binary')
-results = model.evaluate(test_generator,verbose=1)
-print('test loss, test acc:', results)
+# from keras.models import load_model
+
+# model.load_weights('pcb_defect_model3.h5')
+
+# #Testing
+# test_data_dir = 'data/test'
+# test_datagen = ImageDataGenerator(rescale=1. / 255)
+# test_generator = test_datagen.flow_from_directory(
+#     test_data_dir, 
+#     target_size=(img_width, img_height),
+#     batch_size=batch_size,
+#     class_mode='binary')
+
+# results = model.evaluate(
+#     test_generator,
+#     verbose=1)
+# print('test loss, test acc:', results)
