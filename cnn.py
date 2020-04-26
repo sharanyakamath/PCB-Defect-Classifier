@@ -81,7 +81,7 @@ model.save_weights('pcb_defect_model3.h5')
 # model.load_weights('pcb_defect_model3.h5')
 
 # #Testing
-# test_data_dir = 'data/test'
+# test_data_dir = 'augmented-data/test'
 # test_datagen = ImageDataGenerator(rescale=1. / 255)
 # test_generator = test_datagen.flow_from_directory(
 #     test_data_dir, 
