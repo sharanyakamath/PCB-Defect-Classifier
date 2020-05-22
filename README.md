@@ -1,2 +1,2 @@
 # PCB-Defect-Classifier
-python cnn.py
+Classification of defected and non-defected PCB boards.
